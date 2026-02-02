@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduardTaguba | portfolio</title>
+  <link rel="icon" type="image/png" href="assets/img/ed0.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <!-- main -->
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+  <div class="logo">
+    <img src="assets/img/ed0.png" alt="Eduard Taguba Logo" class="logo-img">
+    <span class="logo-text">Eduard Taguba</span>
+  </div>
+
+  <button class="menu-toggle" aria-label="Open Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="nav">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#works" class="nav-link">My Works</a>
+    <a href="#skills" class="nav-link">My Skills</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+  <!-- HERO -->
+  <section id="home" class="hero-section">
+  <h1>CREATIVE <span id="typewriter">DESIGNER</span></h1>
+  <p>Building cinematic digital experiences</p>
+</section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section section">
+  <div class="section-inner about-grid">
+
+    <!-- LEFT: TEXT -->
+    <div class="about-text">
+      <h2 class="section-title gold-bar">ABOUT ME</h2>
+      <p>
+        Eduard G. Taguba is a web designer and graphic designer with a strong focus on
+        creating visually refined and purposeful digital experiences. His work is driven
+        by a balance of creativity and structure, combining clean design with thoughtful
+        visual storytelling. With an attention to detail and a commitment to quality,
+        he approaches every project with the goal of delivering designs that are both
+        engaging and effective.
+      </p>
+    </div>
+
+    <!-- RIGHT: IMAGE CARD -->
+    <div class="about-media">
+      <div class="about-card">
+        <img src="assets/img/ed5.png" alt="About Eduard Taguba">
+    </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- WORKS -->
+  <section id="works" class="works-section section">
+  <div class="section-inner">
+    <h2 class="section-title gold-bar">MY WORKS</h2>
+
+    <div class="works-grid">
+      <div class="work-card">
+        <img src="assets/img/a.png" alt="Project 1">
+      </div>
+      <div class="work-card">
+        <img src="assets/img/b.png" alt="Project 2">
+      </div>
+      <div class="work-card">
+        <img src="assets/img/c.jpg" alt="Project 3">
+      </div>
+
+      <div class="work-card">
+        <video autoplay loop muted playsinline class="card-media">
+          <source src="assets/img/video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="work-card">
+        <img src="assets/img/d.jpg" alt="Project 5" class="card-media">
+      </div>
+
+      <div class="work-card">
+        <img src="assets/img/e.jpg" alt="Project 6" class="card-media">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- SKILLS -->
+<section id="skills" class="skills-section section">
+  <div class="section-inner skills-grid-split">
+
+    <h2 class="section-title gold-bar">MY SKILLS</h2>
+
+    <div class="skills-content">
+
+      <!-- LEFT: SKILL BARS -->
+      <div class="skills-bars">
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Photoshop</span>
+            <span>30%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 30%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>Figma</span>
+            <span>20%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 20%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>HTML</span>
+            <span>50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 50%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-label">
+            <span>CSS</span>
+            <span>50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 50%"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: TOOL ICONS -->
+      <div class="skills-icons">
+        <img src="assets/img/p.png" alt="Photoshop">
+        <img src="assets/img/f.png" alt="Figma">
+        <img src="assets/img/h.png" alt="HTML">
+        <img src="assets/img/cs.png" alt="CSS">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section id="contact" class="contact-section section">
+  <div class="section-inner contact-grid">
+
+    <div class="contact-info">
+      <h2 class="section-title gold-bar">CONTACT</h2>
+      <p class="contact-desc">
+        Interested in working together or discussing a project?
+        Feel free to reach out — I’m always open to new opportunities,
+        collaborations, and creative challenges.
+      </p>
+
+      <div class="contact-direct">
+        <p><strong>Email</strong><br>eduardtaguba70@gmail.com</p>
+        <p><strong>Location</strong><br>Philippines</p>
+      </div>
+    </div>
+
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+      
+      <input type="hidden" name="access_key" value="4ad3918b-d148-42fe-96b6-a3326b9e4e86">
+      <input type="hidden" name="subject" value="New Message from Portfolio">
+      
+      <div class="form-field">
+        <input type="text" name="name" id="name" required>
+        <label for="name">Name</label>
+      </div>
+
+      <div class="form-field">
+        <input type="email" name="email" id="email" required>
+        <label for="email">Email</label>
+      </div>
+
+      <div class="form-field">
+        <textarea name="message" id="message" rows="4" required></textarea>
+        <label for="message">Message</label>
+      </div>
+
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+      <button type="submit" id="submit-btn" class="contact-submit">
+        SEND MESSAGE
+      </button>
+
+      <p id="form-status" style="margin-top: 20px; font-weight: 600; display: none;"></p>
+    </form>
+  </div>
+</section>
+<script>
+  const form = document.getElementById('contact-form');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Change button text to show it's working
+    const originalText = btn.innerHTML;
+    btn.innerHTML = "SENDING...";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        if (response.status == 200) {
+          // Success: Change button to SENT!
+          btn.innerHTML = "SENT!";
+          btn.style.backgroundColor = "#28a745"; // Optional: change to green
+          form.reset();
+        } else {
+          btn.innerHTML = "ERROR";
+          console.log(response);
+        }
+      })
+      .catch(error => {
+        btn.innerHTML = "ERROR";
+        console.log(error);
+      })
+      .then(function() {
+        // Reset button back to original state after 3 seconds
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          btn.style.backgroundColor = ""; // Resets to original CSS
+        }, 3000);
+      });
+  });
+</script>
+
+<script src="assets/js/main.js"></script>
+
+
+</body>
+</html>

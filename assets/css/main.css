@@ -1,0 +1,900 @@
+/* =========================
+   GLOBAL / BRAND SYSTEM
+========================= */
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+
+  /* REAL GOLD (metallic) */
+  --gold-1: #d4af37;
+  --gold-2: #f5e6a8;
+  --gold-3: #b8962e;
+  --gold-4: #fff1b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Oxanium", sans-serif;
+  background: var(--black);
+  color: var(--white);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 90px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 60px;
+  z-index: 1000;
+
+  /* REAL GOLD SHINE */
+  background: linear-gradient(
+    120deg,
+    var(--gold-3),
+    var(--gold-1),
+    var(--gold-4),
+    var(--gold-2),
+    var(--gold-3)
+  );
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+
+  /* force high-quality sampling */
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /* micro depth (not blur) */
+  filter:
+    drop-shadow(0 1px 0 rgba(0,0,0,0.4))
+    drop-shadow(0 0 1px rgba(0,0,0,0.25));
+
+  transform: translateZ(0);
+}
+
+
+.logo-text {
+  color: var(--black);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+
+
+/* =========================
+   HEADER NAV — DRAW EFFECT
+========================= */
+
+.nav a {
+  position: relative;
+  margin-left: 40px;
+  padding: 6px 2px;
+
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+
+  transition: color 0.3s ease;
+}
+
+/* DRAW LINES */
+.nav a::before,
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #000; /* ✅ BLACK DRAW LINE */
+
+  transition: width 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* TOP LINE */
+.nav a::before {
+  top: 0;
+  left: 0;
+}
+
+/* BOTTOM LINE */
+.nav a::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* HOVER DRAW */
+.nav a:hover::before,
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* OPTIONAL: subtle depth */
+.nav a:hover {
+  text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+.section-title {
+  display: inline-block;
+  position: relative;
+
+  font-size: 3rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+
+  margin-bottom: 60px;
+}
+
+.gold-bar {
+  color: #000; /* black text on gold */
+  padding: 10px 100px;
+  line-height: 1.1;
+
+  background: linear-gradient(
+    120deg,
+    var(--gold-3),
+    var(--gold-1),
+    var(--gold-4),
+    var(--gold-2),
+    var(--gold-3)
+  );
+
+  /* makes it look like a solid strip, not a button */
+  box-shadow:
+    inset 0 -1px 0 rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+
+/* =========================
+   SECTION LAYOUT SYSTEM
+========================= */
+
+.section {
+  padding: 160px 10vw; /* wide like contact */
+}
+
+.section-inner {
+  max-width: 1400px; /* controls content width */
+}
+
+
+/* =========================
+   GLOBAL LOADING FADE
+========================= */
+html.is-loading body {
+  opacity: 0;
+  background: #000;
+}
+
+body {
+  transition: opacity 1.2s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+/* =========================
+   SCROLL REVEAL EFFECTS
+========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.1s ease,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+ 1.   HERO SECTION
+========================= */
+.hero-section > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1.4s ease,
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-section > *.hero-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-section {
+  min-height: 100vh;
+  padding-top: 120px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #000;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  letter-spacing: 0.25em;
+}
+
+.hero-section p {
+  margin-top: 20px;
+  color: #cccccc;
+}
+
+/* Smoother Typewriter Cursor */
+#typewriter {
+  border-right: 3px solid var(--gold-1);
+  padding-right: 8px;
+  /* Use a cubic-bezier for a "softer" blink */
+  animation: smoothBlink 0.9s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  /* Ensures the cursor stays consistent even if text height changes */
+  display: inline-block;
+  line-height: 1;
+}
+
+@keyframes smoothBlink {
+  0%, 100% { border-color: var(--gold-1); }
+  50% { border-color: transparent; }
+}
+
+/*2. ABOUT ME SECTION */
+
+.about-section {
+  min-height: 100vh;
+  padding: 160px 12vw;
+
+  background: #000;
+}
+
+.about-section h2 {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 40px;
+}
+
+.about-section p {
+  max-width: 700px;
+  line-height: 1.8;
+  color: #dddddd;
+}
+/* =========================
+   ABOUT SECTION LAYOUT
+========================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* LEFT SIDE — TEXT */
+.about-text {
+  max-width: 620px;
+}
+
+.about-text p {
+  margin-top: 40px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  color: #dddddd;
+}
+
+/* RIGHT SIDE — IMAGE CARD */
+.about-media {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.about-card {
+  width: 100%;
+  max-width: 520px;
+  height: 420px;
+
+  border: 2px solid var(--gold-1);
+  background: #050505;
+
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,0.25),
+    0 30px 60px rgba(0,0,0,0.6);
+}
+
+.about-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-media {
+    justify-content: flex-start;
+    margin-top: 60px;
+  }
+
+  .about-card {
+    max-width: 100%;
+  }
+}
+
+/*3. MY WORKS SECTION*/
+
+.works-section {
+  min-height: 100vh;
+  padding: 160px 10vw;
+  background: #000;
+}
+
+.works-section h2 {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 60px;
+}
+
+/* ==============================================
+   WORKS GRID — UPDATED FOR MULTIPLE ROWS & VIDEO
+   ============================================== */
+
+.works-grid {
+  display: grid;
+  /* repeat(3, 1fr) stays, but we reduce the gap to bring them nearer */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; /* Much smaller gap so cards are nearer */
+}
+
+.work-card {
+  position: relative;
+  width: 100%;
+  /* Increased height from 420px to 600px for better portrait visibility */
+  height: 600px; 
+  border: 2px solid var(--gold-1);
+  background: #050505;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,0.25),
+    0 20px 40px rgba(0,0,0,0.8);
+}
+
+/* MEDIA INSIDE CARD (Replaced old img selector) */
+.work-card img,
+.work-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* Changed from center top to center */
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+/* HOVER EFFECT */
+.work-card:hover img,
+.work-card:hover video {
+  transform: scale(1.08); /* Slightly more zoom for impact */
+}
+
+/* =========================
+   RESPONSIVE (PORTRAIT OPTIMIZED)
+   ========================= */
+
+@media (max-width: 1200px) {
+  /* Reduce side padding on the section so cards have more width space */
+  .works-section {
+    padding: 120px 5vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .works-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+  }
+  .work-card {
+    height: 500px; /* Adjusted height for tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .work-card {
+    height: 550px; /* Tall cards on mobile look like TikTok/Reels */
+  }
+}
+/*4. MY SKILLS SECTION*/
+
+/* =========================
+   SKILLS SECTION LAYOUT
+========================= */
+.skills-section {
+  min-height: 100vh;
+  padding: 160px 10vw;
+  background: #000;
+}
+
+/* The container that splits Bars and Icons */
+.skills-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Gives the bars a bit more space */
+  gap: 100px;
+  margin-top: 80px;
+  align-items: center;
+}
+
+/* =========================
+   LEFT: SKILL BARS
+========================= */
+.skills-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 12px; /* Sleek cinematic height */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--gold-3),
+    var(--gold-1),
+    var(--gold-4)
+  );
+  /* This ensures the bar starts from 0 width if you add animations later */
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================
+   RIGHT: TOOL ICONS
+========================= */
+.skills-icons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+.skills-icons img {
+  width: 70px; /* Uniform size */
+  height: 70px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.8);
+  transition: all 0.4s ease;
+  opacity: 0.6;
+}
+
+.skills-icons img:hover {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* =========================
+   RESPONSIVE FIXES
+========================= */
+@media (max-width: 1100px) {
+  .skills-content {
+    grid-template-columns: 1fr; /* Stack them vertically on smaller screens */
+    gap: 60px;
+  }
+  
+  .skills-icons {
+    grid-template-columns: repeat(4, 1fr); /* 4 icons in a row on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-icons {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 icons on very small phones */
+  }
+}
+
+/*5. CONTACT SECTION*/
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.contact-section {
+  min-height: 100vh;
+  padding: 160px 10vw;
+
+  color: #000;
+
+  background: linear-gradient(
+    120deg,
+    var(--gold-3),
+    var(--gold-1),
+    var(--gold-4),
+    var(--gold-2),
+    var(--gold-3)
+  );
+}
+
+/* =========================
+   GRID LAYOUT
+========================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+/* =========================
+   LEFT — INFO
+========================= */
+
+.contact-info {
+  max-width: 520px;
+}
+
+.contact-info h2 {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 40px;
+}
+
+.contact-desc {
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.contact-direct {
+  margin-top: 60px;
+}
+
+.contact-direct p {
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* =========================
+   RIGHT — FORM (UNDERLINE)
+========================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* FIELD WRAPPER */
+.form-field {
+  position: relative;
+}
+
+/* INPUTS & TEXTAREA */
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0,0,0,0.6);
+
+  padding: 12px 0;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #000;
+
+  outline: none;
+}
+
+/* LABEL */
+.form-field label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* FLOAT LABEL ON FOCUS / INPUT */
+.form-field input:focus + label,
+.form-field input:valid + label,
+.form-field textarea:focus + label,
+.form-field textarea:valid + label {
+  top: -16px;
+  font-size: 0.7rem;
+  opacity: 0.75;
+}
+
+/* ACTIVE LINE */
+.form-field input:focus,
+.form-field textarea:focus {
+  border-bottom-color: #000;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.contact-submit {
+  margin-top: 20px;
+  align-self: flex-start;
+
+  background: transparent;
+  border: 2px solid #000;
+
+  padding: 14px 42px;
+
+  font-weight: 800;
+  letter-spacing: 0.2em;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-submit:hover {
+  background: #000;
+  color: var(--gold-1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+
+  .contact-info {
+    max-width: 100%;
+  }
+}
+
+/*6. MOBILE VER. RESPONSIVE*/
+
+/* =========================
+   6. MOBILE VER. RESPONSIVE
+========================= */
+
+/* Performance Optimizations */
+.reveal, .hero-section > *, .work-card, .work-card img {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+@media (max-width: 868px) {
+  /* Header Adjustments */
+  .site-header {
+    padding: 0 24px;
+    height: 70px;
+  }
+
+  .logo-img { height: 50px; }
+  .logo-text { font-size: 0.85rem; }
+
+  /* Hamburger Menu Styling */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Navigation Overlay */
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+    120deg,
+    var(--gold-3),
+    var(--gold-1),
+    var(--gold-4),
+    var(--gold-2),
+    var(--gold-3)
+  );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1500;
+  }
+
+  .nav.is-active { right: 0 !important; }
+
+  .nav a {
+    font-size: 1.5rem;
+    margin: 15px 0 !important;
+    margin-left: 0 !important;
+    color: #000;
+  }
+
+  .menu-toggle.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-size: 1.4rem !important;
+    letter-spacing: 0.15em !important;
+    margin-bottom: 30px !important;
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .gold-bar {
+    padding: 12px 15px !important;
+    display: block;
+  }
+
+  /* LAYOUT SPACING */
+  .section { padding: 80px 6vw; }
+
+  .about-grid, .skills-content, .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    text-align: center;
+  }
+
+  /* SKILL BARS FIX (Thicker and wider) */
+  .skills-bars {
+    width: 100%;
+    gap: 25px;
+  }
+
+  .skill-bar {
+    height: 16px; /* Increased height from 12px */
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .skill-label {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+
+  .skills-icons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 100%;
+  }
+
+  .skills-icons img {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* CONTACT FORM FIX (Centered Textboxes) */
+  .contact-form {
+    width: 100%;
+    max-width: 100%;
+    align-items: center; /* Centers the fields within the form */
+  }
+
+  .form-field {
+    width: 100%;
+    max-width: 400px; /* Limits width so it doesn't stretch too far */
+  }
+
+  .form-field input, 
+  .form-field textarea {
+    text-align: center; /* Centers the typed text */
+    padding: 15px 0;
+  }
+
+  .form-field label {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Centering the Floating Labels */
+  .form-field input:focus + label,
+  .form-field input:valid + label,
+  .form-field textarea:focus + label,
+  .form-field textarea:valid + label {
+    top: -15px;
+    left: 50% !important;
+    transform: translateX(-50%) scale(0.9) !important;
+  }
+
+  .contact-submit {
+    align-self: center !important;
+    width: 100%;
+    max-width: 250px;
+    margin-top: 10px;
+  }
+
+  .about-card { height: 350px; }
+}
+
+/* Fix for small phones */
+@media (max-width: 480px) {
+  .hero-section h1 { font-size: 1.8rem; letter-spacing: 0.1em; }
+  .section-title { font-size: 1.2rem !important; }
+}
